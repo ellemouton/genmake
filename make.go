@@ -19,12 +19,12 @@ func Generate(path, execName string) error {
 		log.Fatal(err)
 	}
 
-	sFiles, err := checkExt(".cpp")
+	sFiles, err := checkExt(path, ".cpp")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	hFiles, err := checkExt(".h")
+	hFiles, err := checkExt(path, ".h")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -41,14 +41,9 @@ func Generate(path, execName string) error {
 	return t.Execute(f, data)
 }
 
-func checkExt(ext string) ([]string, error) {
-	pathS, err := os.Getwd()
-	if err != nil {
-		return nil, err
-	}
-
+func checkExt(path, ext string) ([]string, error) {
 	var files []string
-	filepath.Walk(pathS, func(path string, f os.FileInfo, _ error) error {
+	filepath.Walk(path, func(path string, f os.FileInfo, _ error) error {
 		if !f.IsDir() {
 			if filepath.Ext(path) == ext {
 				files = append(files, f.Name()[:len(f.Name())-len(ext)])
