@@ -6,7 +6,7 @@ Implemented in Go.
 
 ### Install:
 
-$ go install github.com/ellemouton/genmake
+$ go install github.com/ellemouton/genmake/cmd/genmake
 
 ### Run:
 
