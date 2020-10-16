@@ -1,6 +1,6 @@
-package main
+package genmake
 
-const makeTmpl = `
+const tmpl = `
 CC=g++
 CCFLAGS = -std=c++11
 
